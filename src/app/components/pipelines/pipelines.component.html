@@ -1,0 +1,10 @@
+<app-title title="Pipelines"></app-title>
+<button mat-stroked-button color="primary" (click)="openDialog()">
+    Create New Pipeline
+    <mat-icon>add</mat-icon>
+</button>
+<mat-action-list>
+    <button [routerLink]="['/pipelines', pipeline.id]" mat-list-item *ngFor="let pipeline of pipelines">  
+        {{ pipeline.name }} 
+    </button>
+</mat-action-list>

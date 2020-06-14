@@ -1,0 +1,17 @@
+<app-title title="Create New Pipe Line"></app-title>
+<form [formGroup]="pipelineForm" class="example-form">
+    <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" type="text" placeholder="Pipeline Name" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Select a Workflow</mat-label>
+        <mat-select formControlName="workflowId">
+            <mat-option *ngFor="let workflow of workflows" [value]="workflow.id">{{workflow.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="!pipelineForm?.valid"
+    type="submit" (click)="create()">Create Pipeline</button>
+</form>

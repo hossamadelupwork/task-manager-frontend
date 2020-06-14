@@ -1,0 +1,35 @@
+<div class="root">
+    
+  
+    <div class="board">
+  
+      <div class="board-bar">
+        <p class="board-name">{{ board.name }}</p>
+      </div>
+
+      <div class="board-wrapper">
+        <div class="board-columns" cdkDropListGroup>
+          <div class="board-column" *ngFor="let column of board.columns">
+  
+            <button mat-button color="primary" (click)="openDialog(column.stage.id)">
+                Create New Task
+                <mat-icon>add</mat-icon>
+            </button>
+
+            <div class="column-title">
+              {{ column.stage.name }}
+            </div>
+  
+            <div class="tasks-container"
+            cdkDropList
+            [cdkDropListData]="column.tasks"
+            (cdkDropListDropped)="drop($event,column.stage)">
+              <div class="task" *ngFor="let task of column.tasks" cdkDrag>
+                {{ task.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

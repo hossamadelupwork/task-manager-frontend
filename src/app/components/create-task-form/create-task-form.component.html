@@ -1,0 +1,22 @@
+<app-title title="Create New Task"></app-title>
+<form [formGroup]="taskForm" class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text" placeholder="Task Name" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" type="text" placeholder="Task Description" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Select a Stage</mat-label>
+        <mat-select formControlName="stageId">
+            <mat-option *ngFor="let stage of data.stages" [value]="stage.id">{{stage.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="!taskForm?.valid"
+    type="submit" (click)="createTask()">Create Task</button>
+</form>
